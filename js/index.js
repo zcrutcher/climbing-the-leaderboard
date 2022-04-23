@@ -1,13 +1,11 @@
-const ranking = (score, leaderboard) => {
-    
+const ranking = (score, leaderboard) => {    
     const unique = [... new Set(leaderboard)];
-    let i = 0;
-    for(i; i < unique.length; i++){
-        if(score >= unique[i]){
-            return i+1;
-        }
-    }
-    return i+1;
+
+    const placement = unique.findIndex((element) => {
+        return score >= element
+    })
+
+    return placement > -1 ? placement + 1 : unique.length + 1;
 }
 
 module.exports = ranking;
